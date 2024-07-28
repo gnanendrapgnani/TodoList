@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Arbutus&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.list {
+  margin: 10px 0;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.task {
+  width: 60%;
+  padding-left: 10px;
+  font-size: 1.1rem;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.date {
+  width: 30%;
+  font-size: 1.1rem;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.deltBtn {
+  border: none;
+  outline: none;
+  text-align: center;
+  padding: 3px 14px;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 10%;
+}

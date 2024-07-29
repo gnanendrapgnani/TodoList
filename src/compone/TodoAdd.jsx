@@ -9,7 +9,7 @@ function TodoAdd({ onNewItem }) {
   const handlerAddBtn = (event) => {
     event.preventDefault();
     if (todoTask.current.value === "" || dueDate.current.value === "") {
-      alert("Give task to add in Todo");
+      alert("Enter task and Date to add");
     } else {
       const task = todoTask.current.value;
       const date = dueDate.current.value;

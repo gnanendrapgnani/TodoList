@@ -4,28 +4,29 @@ import TodoAdd from "./TodoAdd";
 import TodoList from "./TodoList";
 import WelcomeMsg from "./WelcomeMsg";
 import { useState } from "react";
+import { TodoWorks } from "../stores/todo-stores";
 
 function TodoContainer() {
   const [todo, setTodo] = useState([]);
 
-  const handleNewItem = (task, date) => {
+  const addTodo = (task, date) => {
     setTodo((currValue) => [...currValue, { name: task, date: date }]);
   };
 
-  const handlerDeletBtn = (todoTask) => {
+  const deleteTodo = (todoTask) => {
     const newTask = todo.filter((task) => task.name !== todoTask);
     setTodo(newTask);
   };
 
   return (
-    <>
+    <TodoWorks.Provider value={{ todo, addTodo, deleteTodo }}>
       <div className={style.container}>
         <TodoHeading />
-        <TodoAdd onNewItem={handleNewItem} />
-        <WelcomeMsg todoList={todo} />
-        <TodoList todo={todo} onClickDelBtn={handlerDeletBtn} />
+        <TodoAdd />
+        <WelcomeMsg />
+        <TodoList />
       </div>
-    </>
+    </TodoWorks.Provider>
   );
 }
 

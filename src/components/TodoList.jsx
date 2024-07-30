@@ -1,7 +1,13 @@
 import style from "./TodoList.module.css";
 import { MdDeleteOutline } from "react-icons/md";
+import { TodoWorks } from "../stores/todo-stores";
+import { useContext } from "react";
 
-function TodoList({ todo, onClickDelBtn }) {
+function TodoList() {
+  const { deleteTodo } = useContext(TodoWorks);
+  const todoObj = useContext(TodoWorks);
+  const todo = todoObj.todo;
+
   return (
     <>
       <div>
@@ -11,7 +17,7 @@ function TodoList({ todo, onClickDelBtn }) {
             <div className={style.date}>{item.date}</div>
             <button
               className={style.deltBtn}
-              onClick={() => onClickDelBtn(item.name)}
+              onClick={() => deleteTodo(item.name)}
             >
               <MdDeleteOutline />
             </button>

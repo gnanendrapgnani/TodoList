@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import style from "./TodoAdd.module.css";
+import { TodoWorks } from "../stores/todo-stores";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 
-function TodoAdd({ onNewItem }) {
+function TodoAdd() {
+  const { addTodo } = useContext(TodoWorks);
   const todoTask = useRef();
   const dueDate = useRef();
 
@@ -15,7 +17,7 @@ function TodoAdd({ onNewItem }) {
       const date = dueDate.current.value;
       todoTask.current.value = "";
       dueDate.current.value = "";
-      onNewItem(task, date);
+      addTodo(task, date);
     }
   };
 

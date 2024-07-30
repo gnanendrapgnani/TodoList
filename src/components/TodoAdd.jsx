@@ -1,48 +1,37 @@
-import { useState } from "react";
+import { useRef } from "react";
 import style from "./TodoAdd.module.css";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 
 function TodoAdd({ onNewItem }) {
-  const [task, setTask] = useState("");
-  const [date, setDate] = useState("");
+  const todoTask = useRef();
+  const dueDate = useRef();
 
-  const handlerText = (event) => {
-    setTask(event.target.value);
-  };
-
-  const handlerDate = (event) => {
-    setDate(event.target.value);
-  };
-
-  const handlerAddBtn = () => {
-    if (task === "") {
-      alert("Give task to add in Todo");
+  const handlerAddBtn = (event) => {
+    event.preventDefault();
+    if (todoTask.current.value === "" || dueDate.current.value === "") {
+      alert("Enter task and Date to add");
     } else {
+      const task = todoTask.current.value;
+      const date = dueDate.current.value;
+      todoTask.current.value = "";
+      dueDate.current.value = "";
       onNewItem(task, date);
-      setTask("");
-      setDate("");
     }
   };
 
   return (
-    <div className={style.todoAddContainer}>
+    <form className={style.todoAddContainer} onSubmit={handlerAddBtn}>
       <input
         className={style.task}
         type="text"
         placeholder="Enter the task here"
-        value={task}
-        onChange={handlerText}
+        ref={todoTask}
       />
-      <input
-        className={style.date}
-        type="date"
-        value={date}
-        onChange={handlerDate}
-      />
-      <button className={style.addBtn} onClick={handlerAddBtn}>
+      <input className={style.date} type="date" ref={dueDate} />
+      <button type="submit" className={style.addBtn}>
         <MdFormatListBulletedAdd />
       </button>
-    </div>
+    </form>
   );
 }
 

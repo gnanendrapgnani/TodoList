@@ -9,8 +9,7 @@ function TodoContainer() {
   const [todo, setTodo] = useState([]);
 
   const handleNewItem = (task, date) => {
-    const newTask = [...todo, { name: task, date: date }];
-    setTodo(newTask);
+    setTodo((currValue) => [...currValue, { name: task, date: date }]);
   };
 
   const handlerDeletBtn = (todoTask) => {
@@ -23,7 +22,7 @@ function TodoContainer() {
       <div className={style.container}>
         <TodoHeading />
         <TodoAdd onNewItem={handleNewItem} />
-        {todo.length === 0 && <WelcomeMsg />}
+        <WelcomeMsg todoList={todo} />
         <TodoList todo={todo} onClickDelBtn={handlerDeletBtn} />
       </div>
     </>

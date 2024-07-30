@@ -1,4 +1,4 @@
-import TodoContainer from "./compone/TodoContainer";
+import TodoContainer from "./components/TodoContainer";
 import "./App.css";
 
 function App() {
